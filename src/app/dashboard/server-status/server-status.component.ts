@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import { Component, DestroyRef, effect, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import { ServerStatus } from '../../models';
 
 @Component({
@@ -12,6 +12,12 @@ export class ServerStatusComponent implements OnInit, OnDestroy {
   protected currentStatus = signal<ServerStatus>('offline');
   private interval?: ReturnType<typeof setInterval>;
   private destroyRef = inject(DestroyRef);
+
+  constructor() {
+    effect(() => {
+      console.log('Effect', this.currentStatus());
+    });
+  }
 
   // https://angular.dev/guide/components/lifecycle
   ngOnInit() {
