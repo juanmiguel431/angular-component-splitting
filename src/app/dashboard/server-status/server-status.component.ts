@@ -11,7 +11,8 @@ import { ServerStatus } from '../../models';
 export class ServerStatusComponent {
   protected currentStatus: ServerStatus = 'offline';
 
-  constructor() {
+  // https://angular.dev/guide/components/lifecycle
+  ngOnInit() {
     setInterval(() => {
       switch (this.currentStatus) {
         case 'offline':
