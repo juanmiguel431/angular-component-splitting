@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ServerStatus } from '../../models';
 
 @Component({
@@ -8,7 +8,7 @@ import { ServerStatus } from '../../models';
   templateUrl: './server-status.component.html',
   styleUrl: './server-status.component.css'
 })
-export class ServerStatusComponent {
+export class ServerStatusComponent implements OnInit {
   protected currentStatus: ServerStatus = 'offline';
 
   // https://angular.dev/guide/components/lifecycle
