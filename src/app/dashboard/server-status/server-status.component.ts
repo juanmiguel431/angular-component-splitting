@@ -1,4 +1,4 @@
-import { Component, DestroyRef, effect, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import { Component, DestroyRef, effect, EffectCleanupFn, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import { ServerStatus } from '../../models';
 
 @Component({
@@ -14,8 +14,12 @@ export class ServerStatusComponent implements OnInit, OnDestroy {
   private destroyRef = inject(DestroyRef);
 
   constructor() {
-    effect(() => {
+    effect((onCleanup) => {
       console.log('Effect', this.currentStatus());
+
+      onCleanup(() => {
+        console.log('Cleanup');
+      });
     });
   }
 
