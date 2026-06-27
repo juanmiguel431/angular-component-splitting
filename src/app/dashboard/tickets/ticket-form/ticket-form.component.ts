@@ -15,10 +15,14 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './ticket-form.component.css'
 })
 export class TicketFormComponent {
-  protected title?: string;
-  protected request?: string;
 
-  protected submit() {
-    console.log({ title: this.title, request: this.request })
+  protected submit(title: HTMLInputElement, request: HTMLTextAreaElement) {
+    console.dir(title);
+    console.dir(request);
+
+    console.log(title);
+    console.log(request);
+
+    console.log({ title: title.value, request: request.value })
   }
 }
