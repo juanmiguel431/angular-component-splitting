@@ -3,7 +3,7 @@ app-control {
   margin-bottom: 2rem;
 }
 
-.control label {
+app-control label {
   display: block;
   font-size: 0.8rem;
   font-weight: bold;
@@ -11,8 +11,8 @@ app-control {
   color: #4f4b53;
 }
 
-.control input,
-.control textarea {
+app-control input,
+app-control textarea {
   width: 100%;
   padding: 0.5rem;
   border: 1px solid #ccc;
