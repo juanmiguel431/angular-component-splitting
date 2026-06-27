@@ -16,7 +16,8 @@ import { FormsModule } from '@angular/forms';
 })
 export class TicketFormComponent {
 
-  protected submit(title: string, request: string) {
-    console.log({ title: title, request: request })
+  protected submit(title: string, request: string, form: HTMLFormElement) {
+    console.log({ title: title, request: request });
+    form.reset();
   }
 }
