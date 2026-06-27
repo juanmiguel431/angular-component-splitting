@@ -1,4 +1,14 @@
-import { Component, ElementRef, QueryList, viewChild, ViewChild, viewChildren, ViewChildren } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnInit,
+  QueryList,
+  viewChild,
+  ViewChild,
+  viewChildren,
+  ViewChildren
+} from '@angular/core';
 import { ButtonComponent } from '../../../shared/button/button.component';
 import { ControlComponent } from '../../../shared/control/control.component';
 import { FormsModule } from '@angular/forms';
@@ -14,9 +24,9 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './ticket-form.component.html',
   styleUrl: './ticket-form.component.css'
 })
-export class TicketFormComponent {
-  // @ViewChild('form')
-  // private form?: ElementRef<HTMLFormElement>;
+export class TicketFormComponent implements OnInit, AfterViewInit {
+  @ViewChild('form')
+  private formByDecorator?: ElementRef<HTMLFormElement>;
 
   // @ViewChildren(ControlComponent)
   // private controls?: QueryList<ControlComponent>;
@@ -24,6 +34,18 @@ export class TicketFormComponent {
   private form = viewChild.required<ElementRef<HTMLFormElement>>('form');
 
   private controls = viewChildren(ControlComponent);
+
+  ngOnInit(): void {
+    console.log('On init');
+    console.log(this.form()); // Populated
+    console.log(this.formByDecorator); // Undefined
+  }
+
+  ngAfterViewInit(): void {
+    console.log('After view init');
+    console.log(this.form()) // Populated
+    console.log(this.formByDecorator); // Populated
+  }
 
   protected submit(title: string, request: string) {
     console.log({ title: title, request: request });
