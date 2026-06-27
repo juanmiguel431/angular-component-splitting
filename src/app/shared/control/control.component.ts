@@ -8,11 +8,16 @@ import { Component, HostBinding, input, ViewEncapsulation } from '@angular/core'
   styleUrl: './control.component.css',
   encapsulation: ViewEncapsulation.None,
   host: {
-    class: 'control'
+    class: 'control',
+    '(click)': 'onClick($event)'
   }
 })
 export class ControlComponent {
   // @HostBinding('class') private className = 'control';
 
   public label = input.required<string>();
+
+  protected onClick(event: MouseEvent) {
+    console.log('Control clicked', event);
+  }
 }
