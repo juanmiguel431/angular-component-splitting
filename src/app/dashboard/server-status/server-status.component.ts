@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, DestroyRef, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import { ServerStatus } from '../../models';
 
 @Component({
@@ -9,7 +9,7 @@ import { ServerStatus } from '../../models';
   styleUrl: './server-status.component.css'
 })
 export class ServerStatusComponent implements OnInit, OnDestroy {
-  protected currentStatus: ServerStatus = 'offline';
+  protected currentStatus = signal<ServerStatus>('offline');
   private interval?: ReturnType<typeof setInterval>;
   private destroyRef = inject(DestroyRef);
 
@@ -18,15 +18,16 @@ export class ServerStatusComponent implements OnInit, OnDestroy {
     console.log('OnInit');
 
     this.interval = setInterval(() => {
-      switch (this.currentStatus) {
+      console.log('Interval');
+      switch (this.currentStatus()) {
         case 'offline':
-          this.currentStatus = 'online';
+          this.currentStatus.set('online');
           break;
         case 'online':
-          this.currentStatus = 'unknown';
+          this.currentStatus.set('unknown');
           break;
         default:
-          this.currentStatus = 'offline';
+          this.currentStatus.set('offline');
           break;
       }
     }, 2000);
