@@ -1,10 +1,10 @@
-<form>
+<form (ngSubmit)="submit()">
   <app-control label="Title">
-    <input type="text" name="title" id="title"/>
+    <input type="text" name="title" id="title" [(ngModel)]="title" />
   </app-control>
 
   <app-control label="Request">
-    <textarea type="text" name="request" id="request" rows="3"></textarea>
+    <textarea type="text" name="request" id="request" rows="3" [(ngModel)]="request"></textarea>
   </app-control>
 
   <p>
