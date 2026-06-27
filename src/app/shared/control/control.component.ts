@@ -9,7 +9,7 @@ import { Component, HostBinding, HostListener, input, ViewEncapsulation } from '
   encapsulation: ViewEncapsulation.None,
   host: {
     class: 'control',
-    // '(click)': 'onClick($event)'
+    '(click)': 'onClick($event)'
   }
 })
 export class ControlComponent {
@@ -17,7 +17,7 @@ export class ControlComponent {
 
   public label = input.required<string>();
 
-  @HostListener('click', ['$event'])
+  // @HostListener('click', ['$event'])
   protected onClick(event: MouseEvent) {
     console.log('Control clicked', event);
   }
