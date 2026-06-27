@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { ButtonComponent } from '../../../shared/button/button.component';
 import { ControlComponent } from '../../../shared/control/control.component';
 import { FormsModule } from '@angular/forms';
@@ -18,9 +18,14 @@ export class TicketFormComponent {
   @ViewChild('form')
   private form?: ElementRef<HTMLFormElement>;
 
+  @ViewChildren(ControlComponent)
+  private controls?: QueryList<ControlComponent>;
+
   protected submit(title: string, request: string) {
     console.log({ title: title, request: request });
 
     this.form?.nativeElement.reset();
+
+    console.log(this.controls?.toArray())
   }
 }
