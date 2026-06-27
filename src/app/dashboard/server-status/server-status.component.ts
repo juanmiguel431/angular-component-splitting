@@ -10,4 +10,20 @@ import { ServerStatus } from '../../models';
 })
 export class ServerStatusComponent {
   protected currentStatus: ServerStatus = 'offline';
+
+  constructor() {
+    setInterval(() => {
+      switch (this.currentStatus) {
+        case 'offline':
+          this.currentStatus = 'online';
+          break;
+        case 'online':
+          this.currentStatus = 'unknown';
+          break;
+        default:
+          this.currentStatus = 'offline';
+          break;
+      }
+    }, 2000);
+  }
 }
