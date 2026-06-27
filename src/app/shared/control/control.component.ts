@@ -7,12 +7,12 @@ import { Component, HostBinding, input, ViewEncapsulation } from '@angular/core'
   templateUrl: './control.component.html',
   styleUrl: './control.component.css',
   encapsulation: ViewEncapsulation.None,
-  // host: {
-  //   class: 'control'
-  // }
+  host: {
+    class: 'control'
+  }
 })
 export class ControlComponent {
-  @HostBinding('class') private className = 'control';
+  // @HostBinding('class') private className = 'control';
 
   public label = input.required<string>();
 }
