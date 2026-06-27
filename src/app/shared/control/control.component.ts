@@ -1,4 +1,5 @@
 import {
+  AfterContentInit,
   Component,
   contentChild,
   ElementRef,
@@ -21,12 +22,17 @@ import {
     '(click)': 'onClick($event)'
   }
 })
-export class ControlComponent {
+export class ControlComponent implements AfterContentInit {
   // @HostBinding('class') private className = 'control';
   private element = inject(ElementRef);
   public label = input.required<string>();
 
   private content = contentChild<ElementRef<HTMLInputElement | HTMLTextAreaElement>>('input');
+
+  ngAfterContentInit(): void {
+    console.log('After content init');
+    console.log(this.content()?.nativeElement);
+  }
 
   // @HostListener('click', ['$event'])
   protected onClick(event: MouseEvent) {
