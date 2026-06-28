@@ -27,4 +27,14 @@ export class TicketsComponent {
 
     console.log(this.tickets());
   }
+
+  protected markAsCompleted(ticket: Ticket) {
+    this.tickets.update(tickets => tickets.map(t => {
+      if (t.id === ticket.id) {
+        t.status = 'closed';
+      }
+
+      return t;
+    }));
+  }
 }

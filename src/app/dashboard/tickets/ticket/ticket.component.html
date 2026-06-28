@@ -3,7 +3,7 @@
     <div
       [class]="{
         'ticket-open': item().status === 'open',
-        'ticket-closed': item().status === 'open'
+        'ticket-closed': item().status === 'closed'
       }"
     ></div>
     <button (click)="toggleShowDetails()">
@@ -46,6 +46,12 @@
   <p>{{ item().request }}</p>
 
   @if (item().status === 'open') {
-  <p><button>Mark as completed</button></p>
+  <p>
+    <button
+      (click)="markAsCompleted()"
+    >
+      Mark as completed
+    </button>
+  </p>
   } }
 </article>

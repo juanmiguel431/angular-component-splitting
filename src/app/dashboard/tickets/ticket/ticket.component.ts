@@ -1,4 +1,4 @@
-import { Component, input, signal } from '@angular/core';
+import { Component, input, output, signal } from '@angular/core';
 import { Ticket } from '../../../models';
 
 @Component({
@@ -12,7 +12,13 @@ export class TicketComponent {
 
   protected showDetails = signal(false);
 
+  public onCompleted = output<void>();
+
   protected toggleShowDetails() {
     this.showDetails.update((value) => !value);
+  }
+
+  protected markAsCompleted() {
+    this.onCompleted.emit();
   }
 }
