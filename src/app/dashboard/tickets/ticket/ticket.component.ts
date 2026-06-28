@@ -8,5 +8,5 @@ import { Ticket } from '../../../models';
   styleUrl: './ticket.component.css',
 })
 export class TicketComponent {
-  item = input.required<Ticket>();
+  public item = input.required<Ticket>();
 }
