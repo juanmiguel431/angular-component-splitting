@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, signal } from '@angular/core';
 import { Ticket } from '../../../models';
 
 @Component({
@@ -9,4 +9,10 @@ import { Ticket } from '../../../models';
 })
 export class TicketComponent {
   public item = input.required<Ticket>();
+
+  protected showDetails = signal(false);
+
+  protected toggleShowDetails() {
+    this.showDetails.update((value) => !value);
+  }
 }

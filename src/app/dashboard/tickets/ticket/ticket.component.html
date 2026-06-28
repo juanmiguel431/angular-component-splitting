@@ -2,14 +2,14 @@
   <h3>
     <div
       [class]="{
-        'ticket-open': true,
-        'ticket-closed': false
+        'ticket-open': item().status === 'open',
+        'ticket-closed': item().status === 'open'
       }"
     ></div>
     <button>
       <span class="text">{{ item().title }}</span>
       <span>
-        @if (true) {
+        @if (showDetails()) {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -17,6 +17,7 @@
           stroke-width="1.5"
           stroke="currentColor"
           class="w-6 h-6"
+          (click)="toggleShowDetails()"
         >
           <path
             stroke-linecap="round"
@@ -31,6 +32,7 @@
           viewBox="0 0 24 24"
           fill="currentColor"
           class="w-6 h-6"
+          (click)="toggleShowDetails()"
         >
           <path
             fill-rule="evenodd"
@@ -43,7 +45,7 @@
     </button>
   </h3>
 
-  @if (true) {
+  @if (showDetails()) {
   <p>{{ item().request }}</p>
 
   @if (item().status === 'open') {
