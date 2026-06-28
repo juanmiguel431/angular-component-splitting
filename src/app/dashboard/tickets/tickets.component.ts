@@ -18,8 +18,6 @@ export class TicketsComponent {
   protected tickets = signal<Ticket[]>([]);
 
   protected submitTicketForm(payload: TicketFormDto) {
-    console.log(payload);
-
     this.tickets.update(tickets => [
       ...tickets, {
         id: uuidv4(),
@@ -27,6 +25,6 @@ export class TicketsComponent {
         status: 'open'
       }]);
 
-    // console.log(this.tickets());
+    console.log(this.tickets());
   }
 }

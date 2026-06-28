@@ -36,7 +36,7 @@ export class TicketFormComponent implements OnInit, AfterViewInit {
 
   private controls = viewChildren(ControlComponent);
 
-  public submit = output<TicketFormDto>();
+  public formSubmitted = output<TicketFormDto>();
 
   ngOnInit(): void {
     // console.log('On init');
@@ -57,6 +57,6 @@ export class TicketFormComponent implements OnInit, AfterViewInit {
 
     // console.log(this.controls())
 
-    this.submit.emit({ title, request });
+    this.formSubmitted.emit({ title, request });
   }
 }
