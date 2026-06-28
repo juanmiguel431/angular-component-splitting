@@ -1,7 +1,11 @@
 <div>
   <ul>
     @for (ticket of tickets(); track ticket.id) {
-      <li>{{ ticket.id }}-{{ ticket.title }}</li>
+      <li>
+        <app-ticket [item]="ticket"/>
+      </li>
+    } @empty {
+      <li>No tickets available.</li>
     }
   </ul>
 </div>
