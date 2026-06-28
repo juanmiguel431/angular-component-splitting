@@ -1,3 +1,11 @@
+<div>
+  <ul>
+    @for (ticket of tickets(); track ticket.id) {
+      <li>{{ ticket.id }}-{{ ticket.title }}</li>
+    }
+  </ul>
+</div>
+
 <div id="new-ticket">
-  <app-ticket-form/>
+  <app-ticket-form (submit)="submitTicketForm($event)"/>
 </div>

@@ -2,7 +2,7 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
-  OnInit,
+  OnInit, output,
   QueryList,
   viewChild,
   ViewChild,
@@ -12,6 +12,7 @@ import {
 import { ButtonComponent } from '../../../shared/button/button.component';
 import { ControlComponent } from '../../../shared/control/control.component';
 import { FormsModule } from '@angular/forms';
+import { TicketFormDto } from '../../../models';
 
 @Component({
   selector: 'app-ticket-form',
@@ -35,6 +36,8 @@ export class TicketFormComponent implements OnInit, AfterViewInit {
 
   private controls = viewChildren(ControlComponent);
 
+  public submit = output<TicketFormDto>();
+
   ngOnInit(): void {
     console.log('On init');
     console.log(this.form()); // Populated
@@ -47,11 +50,13 @@ export class TicketFormComponent implements OnInit, AfterViewInit {
     console.log(this.formByDecorator); // Populated
   }
 
-  protected submit(title: string, request: string) {
+  protected submitForm(title: string, request: string) {
     console.log({ title: title, request: request });
 
     this.form().nativeElement.reset();
 
     console.log(this.controls())
+
+    this.submit.emit({ title, request });
   }
 }
