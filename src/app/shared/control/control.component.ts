@@ -31,24 +31,24 @@ export class ControlComponent implements AfterContentInit {
 
   constructor() {
     afterEveryRender(() => {
-      console.log('After every render everywhere in app')
+      // console.log('After every render everywhere in app')
     });
 
     afterNextRender(() => {
-      console.log('After next render');
+      // console.log('After next render');
     });
   }
 
   ngAfterContentInit(): void {
-    console.log('After content init');
-    console.log(this.content()?.nativeElement);
+    // console.log('After content init');
+    // console.log(this.content()?.nativeElement);
   }
 
   // @HostListener('click', ['$event'])
   protected onClick(event: MouseEvent) {
-    console.log('Control clicked', event);
-    console.log(this.element);
+    // console.log('Control clicked', event);
+    // console.log(this.element);
 
-    console.log(this.content()?.nativeElement);
+    // console.log(this.content()?.nativeElement);
   }
 }

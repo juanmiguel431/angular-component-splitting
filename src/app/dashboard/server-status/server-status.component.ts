@@ -15,20 +15,20 @@ export class ServerStatusComponent implements OnInit, OnDestroy {
 
   constructor() {
     effect((onCleanup) => {
-      console.log('Effect', this.currentStatus());
+      // console.log('Effect', this.currentStatus());
 
       onCleanup(() => {
-        console.log('Cleanup');
+        // console.log('Cleanup');
       });
     });
   }
 
   // https://angular.dev/guide/components/lifecycle
   ngOnInit() {
-    console.log('OnInit');
+    // console.log('OnInit');
 
     this.interval = setInterval(() => {
-      console.log('Interval');
+      // console.log('Interval');
       switch (this.currentStatus()) {
         case 'offline':
           this.currentStatus.set('online');
@@ -46,7 +46,7 @@ export class ServerStatusComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    console.log('OnDestroy');
+    // console.log('OnDestroy');
     // clearInterval(this.interval);
   }
 }

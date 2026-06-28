@@ -39,23 +39,23 @@ export class TicketFormComponent implements OnInit, AfterViewInit {
   public submit = output<TicketFormDto>();
 
   ngOnInit(): void {
-    console.log('On init');
-    console.log(this.form()); // Populated
-    console.log(this.formByDecorator); // Undefined
+    // console.log('On init');
+    // console.log(this.form()); // Populated
+    // console.log(this.formByDecorator); // Undefined
   }
 
   ngAfterViewInit(): void {
-    console.log('After view init');
-    console.log(this.form()) // Populated
-    console.log(this.formByDecorator); // Populated
+    // console.log('After view init');
+    // console.log(this.form()) // Populated
+    // console.log(this.formByDecorator); // Populated
   }
 
   protected submitForm(title: string, request: string) {
-    console.log({ title: title, request: request });
+    // console.log({ title: title, request: request });
 
     this.form().nativeElement.reset();
 
-    console.log(this.controls())
+    // console.log(this.controls())
 
     this.submit.emit({ title, request });
   }
