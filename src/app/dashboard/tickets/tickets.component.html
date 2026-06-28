@@ -3,6 +3,12 @@
     @for (ticket of tickets(); track ticket.id) {
       <li>
         <app-ticket [item]="ticket"/>
+        {{ $first }}
+        {{ $last }}
+        {{ $even }}
+        {{ $odd }}
+        {{ $index }}
+        {{ $count }}
       </li>
     } @empty {
       <li>No tickets available.</li>
